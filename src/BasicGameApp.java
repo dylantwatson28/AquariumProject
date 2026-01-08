@@ -12,14 +12,13 @@ public class BasicGameApp implements Runnable {
     public JPanel panel;
 
     public BufferStrategy bufferStrategy;
-    public Image astroPic;
-    public Image astroidPic;
+    private Image FishPic;
+    private Fish fish1;
+    private Image SharkPic;
+    private Shark shark1;
+    private Image ShrimpPic;
+    private Shrimp shrimp1;
     public Image backgroundPic;
-
-    private Astronaut astro;
-    private Astronaut astro2;
-    private Astroid astroid1;
-    private Astroid astroid2;
 
 
 
@@ -49,14 +48,17 @@ public class BasicGameApp implements Runnable {
 
         //variable and objects
         //create (construct) the objects needed for the game and load up
-        astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png");//load the picture
-        astroidPic = Toolkit.getDefaultToolkit().getImage("Astroid.jpg");
-        backgroundPic = Toolkit.getDefaultToolkit().getImage("star background.jpg");
-        astro = new Astronaut(WIDTH / 2, HEIGHT / 2);
-        astro2 = new Astronaut(randx, randy);
-        astroid1 = new Astroid(100, 100);
-        astroid1.dx = -astroid1.dx;
-        astroid2 = new Astroid(100, 45);
+        FishPic = Toolkit.getDefaultToolkit().getImage("Fish.png");//load the picture
+        SharkPic = Toolkit.getDefaultToolkit().getImage("Shark.jpg");
+        ShrimpPic = Toolkit.getDefaultToolkit().getImage("Shrimp.jpg");
+        backgroundPic = Toolkit.getDefaultToolkit().getImage("water.jpg");
+        fish1 = new Fish(WIDTH / 2, HEIGHT / 2);
+        //FishPic = new Fish(randx, randy);
+        shark1 = new Shark(100, 100);
+        shark1.dx = -shark1.dx;
+        shrimp1 = new Shrimp(200,200);
+
+
 
 
     }// BasicGameApp()
@@ -89,16 +91,16 @@ public class BasicGameApp implements Runnable {
 
     }
     public void crashing(){
-        if (astroid1.hitbox.intersects(astroid2.hitbox) && astroid1.isCrashing == false){
+        if (fish1.hitbox.intersects(shark1.hitbox) && shark1.isCrashing == false){
             System.out.println("explode!");
-            astroid1.height += 50;
+            shark1.height += 50;
             //astroid1.height = astroid1.height + 50; another option
-            astroid1.isCrashing = true;
-            astroid1.dy = -astroid1.dy;
-            astroid2.dy = -astroid2.dy;
-            astro2.isAlive = false;
+            shark1.isCrashing = true;
+            shark1.dy = -shark1.dy;
+            shark1.dy = -shark1.dy;
+            fish1.isAlive = false;
         }
-        if (astroid1.hitbox.intersects(astroid2.hitbox)){
+        if (shark1.hitbox.intersects(shark1.hitbox)){
             System.out.println("no intersection");
         }
     }
