@@ -18,8 +18,8 @@ public class BasicGameApp implements Runnable {
     private Shark shark1;
     private Image ShrimpPic;
     private Shrimp shrimp1;
+    private Image WaterPic;
     public Image backgroundPic;
-
 
 
     // Main method definition
@@ -49,16 +49,14 @@ public class BasicGameApp implements Runnable {
         //variable and objects
         //create (construct) the objects needed for the game and load up
         FishPic = Toolkit.getDefaultToolkit().getImage("Fish.png");//load the picture
-        SharkPic = Toolkit.getDefaultToolkit().getImage("Shark.jpg");
-        ShrimpPic = Toolkit.getDefaultToolkit().getImage("Shrimp.jpg");
-        backgroundPic = Toolkit.getDefaultToolkit().getImage("water.jpg");
-        fish1 = new Fish(WIDTH / 2, HEIGHT / 2);
+        SharkPic = Toolkit.getDefaultToolkit().getImage("Shark.png");
+        ShrimpPic = Toolkit.getDefaultToolkit().getImage("Shrimp.png");
+        backgroundPic = Toolkit.getDefaultToolkit().getImage("Water.png");
+        fish1 = new Fish(WIDTH/2, HEIGHT/2);
         //FishPic = new Fish(randx, randy);
         shark1 = new Shark(100, 100);
         shark1.dx = -shark1.dx;
-        shrimp1 = new Shrimp(200,200);
-
-
+        shrimp1 = new Shrimp(200, 200);
 
 
     }// BasicGameApp()
@@ -85,13 +83,14 @@ public class BasicGameApp implements Runnable {
 
     public void moveThings() {
         //calls the move( ) code in the objects
-        Fish.move();
-        Shark.move();
-        Shrimp.move();
+        fish1.move();
+        shark1.move();
+        shrimp1.move();
 
     }
-    public void crashing(){
-        if (fish1.hitbox.intersects(shark1.hitbox) && shark1.isCrashing == false){
+
+    public void crashing() {
+        if (fish1.hitbox.intersects(shark1.hitbox) && shark1.isCrashing == false) {
             System.out.println("explode!");
             shark1.height += 50;
             //astroid1.height = astroid1.height + 50; another option
@@ -100,7 +99,7 @@ public class BasicGameApp implements Runnable {
             shark1.dy = -shark1.dy;
             fish1.isAlive = false;
         }
-        if (shark1.hitbox.intersects(shark1.hitbox)){
+        if (shark1.hitbox.intersects(shark1.hitbox)) {
             System.out.println("no intersection");
         }
     }
@@ -147,15 +146,16 @@ public class BasicGameApp implements Runnable {
 //
 
 
-
     //paints things on the screen using bufferStrategy
     private void render() {
         Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
         g.clearRect(0, 0, WIDTH, HEIGHT);
         //draw the image of fish
-        g.drawImage(FishPic, Fish.xpos,Fish.ypos,Fish.WIDTH,Fish.HEIGHT,null);
-        g.drawImage(SharkPic, Shark.xpos,Shark.ypos,Shark.WIDTH,Shark.HEIGHT,null);
-        g.drawImage(ShrimpPic,Shrimp.xpos,Shrimp.ypos,Shrimp.WIDTH,Shrimp.HEIGHT,null);
+        System.out.println(FishPic.toString());
+        g.drawImage(backgroundPic,0,0,WIDTH,HEIGHT,null);
+        g.drawImage(FishPic, fish1.xpos, fish1.ypos, fish1.width, fish1.height, null);
+        g.drawImage(SharkPic, shark1.xpos, shark1.ypos, shark1.width, shark1.height, null);
+        g.drawImage(ShrimpPic, shrimp1.xpos, shrimp1.ypos, shrimp1.width, shrimp1.height, null);
 
         g.dispose();
 

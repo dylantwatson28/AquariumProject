@@ -13,8 +13,8 @@ import java.awt.*;
         public Fish(int pXpos, int pYpos){
             xpos = pXpos;
             ypos = pYpos;
-            dx = 10;
-            dy = 10;
+            dx = 5;
+            dy = 5;
             width = 60;
             height = 60;
             isAlive = true;

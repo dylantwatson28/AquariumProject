@@ -14,8 +14,8 @@ import java.awt.*;
         public Shark(int pXpos, int pYpos){
             xpos = pXpos;
             ypos = pYpos;
-            dx = 15;
-            dy = 15;
+            dx = 5;
+            dy = 5;
             width = 85;
             height = 85;
             isAlive = false;
@@ -24,20 +24,20 @@ import java.awt.*;
             //constructor
         }
         public void move(){
-            if(xpos>=1000-width){
-                xpos = 0;
+            if(xpos>=1000 - width){
+                dx=-dx;
             }
             if(xpos<=0){
-                xpos=999-width;
+                dx=-dx;
+            }
+            if(ypos>=700){
+                dy=-dy;
             }
             if(ypos<=0){
-                ypos=700-height;
+                dy=-dy;
             }
-            if(ypos>=750){
-                ypos=1;
-            }
-            xpos = xpos + dx;
-            ypos = ypos + dy;
+            xpos=xpos+dx;
+            ypos=ypos+dy;
             hitbox = new Rectangle(xpos,ypos,width,height);
         }
     }
