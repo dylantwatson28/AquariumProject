@@ -25,20 +25,20 @@ public class Shrimp {
             //constructor
         }
     public void move(){
-        if(xpos>=1000 - width){
-            dx=-dx;
+        if(xpos>=1000-width){
+            xpos = 0;
         }
         if(xpos<=0){
-            dx=-dx;
-        }
-        if(ypos>=700){
-            dy=-dy;
+            xpos=999-width;
         }
         if(ypos<=0){
-            dy=-dy;
+            ypos=700-height;
         }
-        xpos=xpos+dx;
-        ypos=ypos+dy;
+        if(ypos>=750){
+            ypos=1;
+        }
+        xpos = xpos + dx;
+        ypos = ypos + dy;
         hitbox = new Rectangle(xpos,ypos,width,height);
     }
     }

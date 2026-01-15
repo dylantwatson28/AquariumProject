@@ -9,6 +9,7 @@ import java.awt.*;
         public int height;
         public boolean isAlive;
         public Rectangle hitbox;
+        public boolean isCrashing;
 
         public Fish(int pXpos, int pYpos){
             xpos = pXpos;
@@ -18,6 +19,7 @@ import java.awt.*;
             width = 60;
             height = 60;
             isAlive = true;
+            isCrashing = true;
             hitbox = new Rectangle(xpos,ypos,width,height);
         }
         public void move(){
