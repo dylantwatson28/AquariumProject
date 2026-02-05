@@ -15,8 +15,8 @@ public class Shrimp {
         public Shrimp(int pXpos, int pYpos){
             xpos = pXpos;
             ypos = pYpos;
-            dx = 5;
-            dy = 5;
+            dx = 8;
+            dy = 8;
             width = 85;
             height = 85;
             isAlive = false;

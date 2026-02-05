@@ -86,21 +86,35 @@ public class BasicGameApp implements Runnable {
         fish1.move();
         shark1.move();
         shrimp1.move();
+        crashing();
 
     }
 
     public void crashing() {
-        if (shark1.hitbox.intersects(fish1.hitbox) && fish1.isCrashing == true) {
+        if (shark1.hitbox.intersects(fish1.hitbox) && fish1.isCrashing == false) {
             System.out.println("chomp!");
-            shark1.height += 50;
+            shark1.height += 15;
             //shark1.height = shark1.height + 50; (another option)
             shark1.isCrashing = true;
             shark1.dy = -shark1.dy;
             fish1.dy = -fish1.dy;
-            fish1.isAlive = false;
+            fish1.isAlive = true;
         }
-        if (shark1.hitbox.intersects(fish1.hitbox)) {
+        if (!shark1.hitbox.intersects(fish1.hitbox)) {
             System.out.println("intersection");
+            shark1.isCrashing = false;
+        }
+        if (fish1.hitbox.intersects(shrimp1.hitbox) && shrimp1.isCrashing == false){
+            System.out.println("crunch!");
+            fish1.height += 10;
+            shrimp1.isCrashing = true;
+            fish1.dy = -fish1.dy;
+            shrimp1.dy = -shrimp1.dy;
+            shrimp1.isAlive = true;
+        }
+        if (!fish1.hitbox.intersects(shrimp1.hitbox)){
+            System.out.println("intersection!!");
+            shrimp1.isCrashing = false;
         }
     }
 
