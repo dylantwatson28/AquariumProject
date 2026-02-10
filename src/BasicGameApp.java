@@ -170,6 +170,15 @@ public class BasicGameApp implements Runnable {
         g.drawImage(FishPic, fish1.xpos, fish1.ypos, fish1.width, fish1.height, null);
         g.drawImage(SharkPic, shark1.xpos, shark1.ypos, shark1.width, shark1.height, null);
         g.drawImage(ShrimpPic, shrimp1.xpos, shrimp1.ypos, shrimp1.width, shrimp1.height, null);
+        //make fish die
+        if (fish1.isAlive == true){
+            g.drawImage(FishPic, fish1.xpos, fish1.ypos, fish1.width, fish1.height, null);
+            //makes the fish die
+        }
+        if (shrimp1.isAlive == true){
+            g.drawImage(ShrimpPic, shrimp1.xpos, shrimp1.ypos, shrimp1.width, shrimp1.height, null);
+            //makes shrimp able to die
+        }
 
         g.dispose();
 
