@@ -18,7 +18,7 @@ import java.awt.*;
             dy = 8;
             width = 85;
             height = 85;
-            isAlive = false;
+            isAlive = true;
             isCrashing = false;
             hitbox = new Rectangle (xpos,ypos,width,height);
             //constructor

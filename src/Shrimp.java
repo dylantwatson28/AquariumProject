@@ -15,11 +15,11 @@ public class Shrimp {
         public Shrimp(int pXpos, int pYpos){
             xpos = pXpos;
             ypos = pYpos;
-            dx = 8;
-            dy = 8;
+            dx = 10;
+            dy = 10;
             width = 85;
             height = 85;
-            isAlive = false;
+            isAlive = true;
             isCrashing = false;
             hitbox = new Rectangle (xpos,ypos,width,height);
             //constructor
@@ -28,7 +28,7 @@ public class Shrimp {
         if(xpos>=1000-width){
             xpos = 0;
         }
-        if(xpos<=0){
+        if(xpos<0){
             xpos=999-width;
         }
         if(ypos<=0){
