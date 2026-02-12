@@ -10,12 +10,14 @@ import java.awt.*;
         public boolean isAlive;
         public Rectangle hitbox;
         public boolean isCrashing;
+        //variables
 
         public Fish(int pXpos, int pYpos){
             xpos = pXpos;
             ypos = pYpos;
             dx = 8;
             dy = 8;
+            //how fast it goes
             width = 60;
             height = 60;
             isAlive = true;

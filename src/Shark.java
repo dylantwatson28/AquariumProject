@@ -10,14 +10,17 @@ import java.awt.*;
         public Rectangle hitbox;
         public boolean isAlive;
         public boolean isCrashing;
+        //variables
 
         public Shark(int pXpos, int pYpos){
             xpos = pXpos;
             ypos = pYpos;
             dx = 8;
             dy = 8;
+            //how fast it goes
             width = 85;
             height = 85;
+            //measurements of object
             isAlive = true;
             isCrashing = false;
             hitbox = new Rectangle (xpos,ypos,width,height);

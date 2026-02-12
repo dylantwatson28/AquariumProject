@@ -21,6 +21,10 @@ public class BasicGameApp implements Runnable {
     private Image WaterPic;
     public Image backgroundPic;
     public Image sharkwinpic;
+    private sharkwin sharkwin;
+    //variables
+    //private images vars to set them in code to print them out
+    //private object to set them in code
 
 
     // Main method definition
@@ -53,13 +57,17 @@ public class BasicGameApp implements Runnable {
         SharkPic = Toolkit.getDefaultToolkit().getImage("Shark.png");
         ShrimpPic = Toolkit.getDefaultToolkit().getImage("Shrimp.png");
         backgroundPic = Toolkit.getDefaultToolkit().getImage("Water.png");
-        sharkwinpic = Toolkit.getDefaultToolkit().getImage("shark win cs.jpeg");
+        //sharkwinpic = Toolkit.getDefaultToolkit().getImage("shark win cs.jpeg");
+        sharkwinpic = Toolkit.getDefaultToolkit().getImage("shark win cs.jpeg");//load the picture
+        //makes the pictures print out
+
         fish1 = new Fish(WIDTH/2, HEIGHT/2);
         //FishPic = new Fish(randx, randy);
         shark1 = new Shark(randx, randy);
         shark1.dx = -shark1.dx;
         randx = (int) (Math.random() * 999) + 1;
         shrimp1 = new Shrimp(randx, randy);
+        sharkwin = new sharkwin(200, 200);
 
 
     }// BasicGameApp()
@@ -121,6 +129,9 @@ public class BasicGameApp implements Runnable {
 //            System.out.println("intersection!!");
             shrimp1.isCrashing = false;
         }
+        if (fish1.isAlive == false && shrimp1.isAlive == false){
+            sharkwin.isAlive = true;
+        }
     }
 
     //Pauses or sleeps the computer for the amount specified in milliseconds
@@ -173,20 +184,25 @@ public class BasicGameApp implements Runnable {
         //draw the image of fish
 //        System.out.println(FishPic.toString());
         g.drawImage(backgroundPic,0,0,WIDTH,HEIGHT,null);
-        g.drawImage(sharkwinpic,0,0, WIDTH,HEIGHT,null);
+        //g.drawImage(sharkwinpic,0,0, WIDTH,HEIGHT,null);
         g.setColor(Color.GREEN);
         g.drawRect(shark1.hitbox.x, shark1.hitbox.y, shark1.hitbox.width, shark1.hitbox.height);
-        g.drawRect(fish1.hitbox.x, fish1.hitbox.y, fish1.hitbox.width, fish1.hitbox.height);
 
         if (fish1.isAlive == true){
         g.drawImage(FishPic, fish1.xpos, fish1.ypos, fish1.width, fish1.height, null);
+        g.drawRect(fish1.hitbox.x, fish1.hitbox.y, fish1.hitbox.width, fish1.hitbox.height);
+
         }
         g.drawImage(SharkPic, shark1.xpos, shark1.ypos, shark1.width, shark1.height, null);
 
         if (shrimp1.isAlive == true){
             g.drawImage(ShrimpPic, shrimp1.xpos, shrimp1.ypos, shrimp1.width, shrimp1.height, null);
-            //makes shrimp able to die
         }
+        if (sharkwin.isAlive == true){
+            g.drawImage(sharkwinpic, sharkwin.xpos, sharkwin.ypos, sharkwin.width, sharkwin.height, null);
+            //makes shark win pic show after shrimp and fish are dead
+        }
+
 
 
         g.dispose();
