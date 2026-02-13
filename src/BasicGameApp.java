@@ -104,6 +104,7 @@ public class BasicGameApp implements Runnable {
     public void crashing() {
         if (shark1.hitbox.intersects(fish1.hitbox) && shark1.isCrashing == false && fish1.isAlive == true && shark1.isAlive == true) {
             System.out.println("chomp!");
+            //shark kills fish when they intersect
             shark1.height += 15;
             //shark expands after intersection with fish
             //shark1.height = shark1.height + 50; (another option)
@@ -118,6 +119,7 @@ public class BasicGameApp implements Runnable {
         }
         if (fish1.hitbox.intersects(shrimp1.hitbox)&& shrimp1.isCrashing == false && shrimp1.isAlive == true && fish1.isAlive == true){
             System.out.println("crunch!");
+            //fish and shrimp intersect makes the shrimp die
             fish1.height += 10;
             //fish expands after intersecting with shrimp
             shrimp1.isCrashing = true;
@@ -131,6 +133,7 @@ public class BasicGameApp implements Runnable {
         }
         if (fish1.isAlive == false && shrimp1.isAlive == false){
             sharkwin.isAlive = true;
+            //puts shark win pic up
         }
     }
 
@@ -197,6 +200,7 @@ public class BasicGameApp implements Runnable {
 
         if (shrimp1.isAlive == true){
             g.drawImage(ShrimpPic, shrimp1.xpos, shrimp1.ypos, shrimp1.width, shrimp1.height, null);
+            //prints shrimp to move around
         }
         if (sharkwin.isAlive == true){
             g.drawImage(sharkwinpic, sharkwin.xpos, sharkwin.ypos, sharkwin.width, sharkwin.height, null);
